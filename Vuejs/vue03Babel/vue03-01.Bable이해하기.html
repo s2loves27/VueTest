@@ -40,4 +40,36 @@
 
 
 
-<!-- Babel 사용하기 -->
+<!-- Es5 Babel 사용하기 -->
+
+<script type="text/javascript">
+
+    var name = "abc"
+    var age = 10;
+
+    var getMessgage = function () {
+        return 'Hello'
+    }
+    var outputes5 = document.getElementById("output_es5")
+
+    outputes5.innerText = getMessgage();
+
+
+</script>
+
+<!--ES6 Babel 사용기-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+<script type="text/babel">
+
+    const name = "abc"
+    let age = 10
+
+    const getMessgage = () => {
+        return "Hello ES6"
+    }
+
+    var outputes6 = document.getElementById("output_es6");
+
+    outputes6.innerText = getMessgage();
+
+</script>
