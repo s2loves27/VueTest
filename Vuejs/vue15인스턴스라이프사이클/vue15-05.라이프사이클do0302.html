@@ -33,13 +33,50 @@
     <hr>
 
     <div id="app">
-        {{ message }}
+        <button v-on:click="btn1">btn1</button>
+        <p> </p>
+        <p>update 변경 예제 숫자 : <span>{{ message }}</span></p>
         <!-- 버튼 기능 추가-->
-        
+
     </div>
 </body>
 
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+<script>
+    //import axios from "axios";
+    var a = 1
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            message: "0",
+        },
+        //template: ``,
+        methods: {
+            btn1: function (event) {
+                this.$data.message = a;
+                a = a + 1;
+            }
 
+        },
+        components: {},
+        computed: {
+
+        },
+        watch: {
+            message: function (val) {
+                this.$data.message = val;
+            }
+        },
+        mounted: function () {
+            console.log("mounted");
+            this.$data.message = "change a data at mounted";
+        },
+        updated: function () {
+            console.log("updated")
+        },
+    });
+</script>

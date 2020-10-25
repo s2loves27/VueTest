@@ -39,7 +39,7 @@
 <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
 
 <script>
-    new Vue({
+    var vm = new Vue({
         el: "#my",
         data: {
             message: "change message at mounted!!!",
@@ -51,4 +51,12 @@
             }
         }
     });
+
+    winlodw.setTimeout(function () {
+        vm.$data.message = "change message after 3 seconds!!!";
+    }, 3000);
+
+    winlodw.setTimeout(function () {
+        Vue.set(vm.$data, "message", "change message after 5 seconds!!!");
+    }, 5000);
 </script>

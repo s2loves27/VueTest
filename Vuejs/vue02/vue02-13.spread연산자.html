@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    /* 실습은 E6를 지원하는 브라우저에 테스트 */
+    const cities = ["서울", "대구", "부산"];
+
+    console.log(...cities)
+
+    const east = ["U", "K", "T"];
+    const west = ["N", "C", "G"];
+
+    //east 와 west 합치기 ==.> Array
+    const coutries1 = west.concat(east);
+    console.log(coutries1);
+
+    const coutries2 = [...west, ...east];
+    console.log(coutries2)
+
+
+
+</script>
