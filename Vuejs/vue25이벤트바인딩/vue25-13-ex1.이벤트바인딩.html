@@ -53,7 +53,7 @@
             <li><a class="image3" href="../images/image4.jpg" v-on:click="imageclick"> 고양이 사진 </a></li>
         </ul>
 
-        <img id="img2" />
+        <img id="img2" v-bind:src="img_image3" />
         <hr>
 
         <pre>
@@ -61,14 +61,8 @@
         이미지 위에 마우스를 올리면 ==> mouseover
         이미지 위에 마우스를 내리면 ==> mouseout
         </pre>
-        <img src="../images/but1.gif" 
-            id="but1" 
-            v-on:mouseover="imageover" 
-            v-on:mouseout="imageout" />
-        <img src="../images/img_swap_off.png" 
-            id="img-swap" 
-            v-on:mouseover="imageover" 
-            v-on:mouseout="imageout" />
+        <img src="../images/but1.gif" id="but1" v-on:mouseover="imageover" v-on:mouseout="imageout" />
+        <img src="../images/img_swap_off.png" id="img-swap" v-on:mouseover="imageover" v-on:mouseout="imageout" />
         <hr>
 
         <pre>
@@ -78,18 +72,12 @@
         박스에 mouseout  이벤트를 핸들러를 작성하시오.
         </pre>
 
-        <span v-on:mouseover="spanmouseover" 
-              v-on:mousedown="spanmousedown"  
-              v-on:mouseup="spanmouseup"  
-              v-on:mouseout="spanmouseout"></span>
-        <span v-on:mouseover="spanmouseover" 
-              v-on:mousedown="spanmousedown"  
-              v-on:mouseup="spanmouseup" 
-              v-on:mouseout="spanmouseout"></span>
-        <span v-on:mouseover="spanmouseover" 
-              v-on:mousedown="spanmousedown"  
-              v-on:mouseup="spanmouseup" 
-              v-on:mouseout="spanmouseout"></span>
+        <span v-on:mouseover="spanmouseover" v-on:mousedown="spanmousedown" v-on:mouseup="spanmouseup"
+            v-on:mouseout="spanmouseout"></span>
+        <span v-on:mouseover="spanmouseover" v-on:mousedown="spanmousedown" v-on:mouseup="spanmouseup"
+            v-on:mouseout="spanmouseout"></span>
+        <span v-on:mouseover="spanmouseover" v-on:mousedown="spanmousedown" v-on:mouseup="spanmouseup"
+            v-on:mouseout="spanmouseout"></span>
         <hr>
 
         <pre>
@@ -113,6 +101,45 @@ select 에 change 이벤트 핸들러를 작성하시오.
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+
+<script>
+    //import axios from "axios";
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            img_image3: null,
+        },
+        //template: ``,
+        methods: {
+            imageclick: function (event) {
+                // <a href ="../images/image3.jpg" 가져오려면.
+                console.log(evnet.target.href)
+
+                // this.$data.img_image3 = event.target.herf;
+                Vue.set(this.$data, "img_image3", event.target.href);
+
+                //a 태그의 페이지 이동 막기
+                event.stopPropagation();
+                event.preventDefault();
 
 
-
+            }
+        },
+        components: {},
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function () {
+            console.log("mounted");
+        },
+        updated: function () {
+            console.log("updated");
+        },
+    });
+</script>

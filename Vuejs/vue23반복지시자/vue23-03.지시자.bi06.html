@@ -39,6 +39,22 @@
                 </tr>
             </tbody>
         </table>
+        <p>name :
+            <input v-model:value="name">
+        </p>
+        <p>tel :
+            <input v-model:value="tel">
+        </p>
+        </p>address :
+        <input v-model:value="address">
+        </p>
+        <button v-on:click="btn">make</button>
+        <div v-if="awesome">
+            저장되었습니다.
+        </div>
+        <div v-else>
+            값을 입력해주세요.
+        </div>
     </div>
 
 </body>
@@ -46,4 +62,55 @@
 </html>
 
 <!-- vue 스크립트 플러그인 임포트   -->
-
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+<script>
+    //import axios from "axios";
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            contacts: [{
+                name: "아이유", tel: "010-1111-1112", address: "서울시",
+            },
+            { name: "혜리", tel: "010-1111-2323", address: "인천시" }
+            ],
+            name: null,
+            tel: null,
+            address: null,
+            awesome: null
+
+        },
+        //template: ``,
+        methods: {
+            btn: function (event) {
+                if ((this.$data.name != null) && (this.$data.tel != null) && (this.$data.address != null)) {
+                    var aa = { name: this.$data.name, tel: this.$data.tel, address: this.$data.address };
+                    this.$data.contacts.push(aa)
+                    // Vue.set(this.$data.contacts, this.$data.contacts.length, aa);
+                    this.$data.name = null;
+                    this.$data.tel = null;
+                    this.$data.address = null;
+                    this.$data.awesome = true
+                } else {
+                    this.$data.awesome = false
+                }
+
+            }
+        },
+        components: {},
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function () {
+            console.log("mounted");
+        },
+        updated: function () {
+            console.log("updated");
+        },
+    });
+
+</script>
