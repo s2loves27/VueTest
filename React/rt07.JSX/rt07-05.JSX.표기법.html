@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
 
-    <link rel="stylesheet" href="../css/reset.css"/>
+    <link rel="stylesheet" href="../css/reset.css" />
 </head>
 
 <body>
@@ -35,3 +35,62 @@
 <!-- react 플러그인 include   -->
 <!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
 
+<!-- react 플러그인 임포트   -->
+<!-- 주의: 사이트를 배포할 때는 'development.js'를 'production.min.js' 대체하세요. -->
+<script
+    src='https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js'> /* import { React} from 'react'; */</script>
+<script
+    src='https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js'>/* import { ReactDOM } from 'react-dom'; */</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js'>/* JSX를 자바스크립트로 변환 */</script>
+<script type='text/babel'>
+    //import React, { Component } from 'react'
+    //import ReactDOM from 'react-dom'
+
+    console.log(React)
+    console.log(ReactDOM)
+
+    class Jsx extends React.Component {
+
+        static defaultProps = {  /*  props의 디폴트 값 설정 */ }
+        static propsTypes = {  /* props의 프로퍼티 타입 설정 */ }
+        state = {
+            style1: {
+                border: "2px solid red",
+                backgroundColor: "red",
+            },
+        }
+        constructor(props) {
+            super()
+            // this 바인딩
+        }
+        componentDidMount() {
+            // 마운트 완료 후에  : 페이지 load 될 때 한번
+        }
+        componentDidUpdate(prevProps, prevState) {
+            // 업데이트 완료 후에 : 여러번, state 가 변경될 때마다
+        }
+        componentWillUnmount() {
+            // 언마운트 완료 후에 : 페이지 unload 될 때 한번
+        }
+        handler = (event) => {
+            // 이벤트 핸들러는 화살표 함수로 만들면 this를 bind() 생략해도 된다
+            console.log(event.target)//
+        }
+        //스타일 속성은 사용 불가.. 변수로 만들어야 한다. 
+        render() {
+            return (
+                <div className="my-div">
+                    <div style={this.state.style1}>
+                        &nbsp; {this.props.mesg}
+                    </div>
+                </div>
+
+            )
+        }
+    }
+    ReactDOM.render(
+        <Jsx mesg={"Hello, React"}></Jsx>, document.getElementById("app")
+    )
+
+//export default Jsx
+</script>
