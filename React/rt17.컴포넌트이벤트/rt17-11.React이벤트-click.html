@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
 
-    <link rel="stylesheet" href="../css/reset.css"/>
+    <link rel="stylesheet" href="../css/reset.css" />
 
     <style>
         .App {
@@ -22,50 +22,50 @@
         컴포넌트 생성과 click 이벤트 핸들러 작성을 실습한다.
 
         1. Greeting 컴포넌트 만들기
-            ...(중략)
-            let style1 = {...중략}
-            let style2 = {...중략}
-            return (
-                <div>
-                    <div style={style1} onClick={this.handlerClick1}>
-                        div1
-                    </div>
-                    <div style={style2} onClick={this.handlerClick2}>
-                        div2
-                    </div>                    
-                </div>
-            );
+        ...(중략)
+        let style1 = {...중략}
+        let style2 = {...중략}
+        return (
+        <div>
+            <div style={style1} onClick={this.handlerClick1}>
+                div1
+            </div>
+            <div style={style2} onClick={this.handlerClick2}>
+                div2
+            </div>
+        </div>
+        );
 
         2. 스타일을 작성한다.
-            style1 = {
-                width: 100px;
-                height: 100px;
-                background: gray;
-                vertical-align: center;
-                line-height: 100px;
-            }
-            style2 = {
-                width: 100px;
-                height: 100px;
-                background: yellow;
-                vertical-align: center;
-                line-height: 100px;
-            }
+        style1 = {
+        width: 100px;
+        height: 100px;
+        background: gray;
+        vertical-align: center;
+        line-height: 100px;
+        }
+        style2 = {
+        width: 100px;
+        height: 100px;
+        background: yellow;
+        vertical-align: center;
+        line-height: 100px;
+        }
         3. div의 click 이벤트 핸들러를 작성하고 콘솔에 this 값을 출력한다.
-            handlerClick1(event){
-                console.log(this); // bind가 안되면 this는 undefined
-            }
-            handlerClick2 = (event)=>{
-                console.log(this); // bind가 되면 this는 Greeting 컴포넌트다
-            }
-            
+        handlerClick1(event){
+        console.log(this); // bind가 안되면 this는 undefined
+        }
+        handlerClick2 = (event)=>{
+        console.log(this); // bind가 되면 this는 Greeting 컴포넌트다
+        }
+
         4. ReactDOM 을 사용하여 화면에 붙인다.
-            예시)
-            ReactDOM.render( 
-                <Greeting></Greeting>
-                , 
-                document.getElementById("app") 
-            ) 
+        예시)
+        ReactDOM.render(
+        <Greeting></Greeting>
+        ,
+        document.getElementById("app")
+        )
     </xmp>
 
     <div id="app"></div>
@@ -77,5 +77,93 @@
 <!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
 
 
+<!-- react 플러그인 임포트   -->
+<!-- 주의: 사이트를 배포할 때는 'development.js'를 'production.min.js' 대체하세요. -->
+<script
+    src='https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js'> /* import { React} from 'react'; */</script>
+<script
+    src='https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js'>/* import { ReactDOM } from 'react-dom'; */</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js'>/* JSX를 자바스크립트로 변환 */</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.5/redux.js"> /* import {Redux} from "redux"; */</script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.1.3/react-redux.js">/* import {ReactRedux} from "react-redux"; */</script>
+<script type='text/babel'>
+    //import React, { Component } from 'react'
+    //import ReactDOM from 'react-dom'
 
-    
+    console.log(React)
+    console.log(ReactDOM)
+
+    class Greeting extends React.Component {
+
+
+        state = {
+            styleCommon: {
+                width: "100px",
+                height: "100px",
+                verticalAlign: "center",
+                lineHeight: "100px",
+            },
+            style1: {
+                ...this.styleCommon,
+                background: "gray",
+
+            },
+            style2: {
+                ...this.styleCommon,
+                background: "yellow",
+
+            },
+        }
+        constructor(props) {
+            super()
+            // this 바인딩
+        }
+        componentDidMount() {
+            // 마운트 완료 후에  : 페이지 load 될 때 한번
+        }
+        componentDidUpdate(prevProps, prevState) {
+            // 업데이트 완료 후에 : 여러번, state 가 변경될 때마다
+        }
+        componentWillUnmount() {
+            // 언마운트 완료 후에 : 페이지 unload 될 때 한번
+        }
+        handlerClick1 = (event) => {
+            console.log(event.target, this); // bind가 안되면 this는 undefined
+        }
+        handlerClick2 = (event) => {
+            console.log(event.target, this); // bind가 되면 this는 Greeting 컴포넌트다
+        }
+        func = {
+            create() { },
+            read() { },
+            update() { },
+            delete() { }
+        }
+        render() {
+            // let style1 = { ...중략 }
+            // let style2 = { ...중략 }
+            console.log(this.state.style1)
+            console.log(this.state.styleCommon)
+
+            return (
+                <div>
+                    <div style={this.state.style1} onClick={this.handlerClick1}>
+                        div1
+                    </div>
+                    <div style={this.state.style2} onClick={this.handlerClick2}>
+                        div2
+                    </div>
+                </div >
+            )
+        }
+    }
+
+    ReactDOM.render(
+        <Greeting></Greeting>
+        ,
+        document.getElementById("app")
+    )
+
+//export default Greeting
+</script>
